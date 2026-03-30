@@ -4,4 +4,7 @@ version = "0.1.0"
 description = "multimodal RAG on PDFs"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "ipykernel>=7.2.0",
+    "unstructured[pdf]>=0.22.6",
+]
