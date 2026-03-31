@@ -9,7 +9,7 @@ wheels/
 # Data
 docs/
 notebooks/dbv1/
-dbv1/
+db/
 
 # Virtual environments
 .venv
