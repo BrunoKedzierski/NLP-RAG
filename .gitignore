@@ -8,6 +8,11 @@ wheels/
 
 # Data
 docs/
+notebooks/dbv1/
+dbv1/
 
 # Virtual environments
 .venv
+
+# Local environment variables
+.env

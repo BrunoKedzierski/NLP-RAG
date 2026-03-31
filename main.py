@@ -5,7 +5,7 @@ Demo quickstart sample from the Unstructured library docs.
 from unstructured.partition.pdf import partition_pdf
 from unstructured.staging.base import elements_to_json
 
-file_path = "data"
+file_path = "docs"
 base_file_name = "layout-parser-paper"
 
 
