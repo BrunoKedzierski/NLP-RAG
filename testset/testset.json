@@ -1,0 +1,10 @@
+[
+
+    {
+        "query": "What is coco?",
+        "expected_response":     "COCO is Common Objects in Context dataset  This dataset contains 328,000 annotated images with 91 unique object classes, 80 of which appear in the annotated data. The annotations describe the location and dimensions of bounding boxes as well as the class of each object in the image."
+    }
+
+
+
+]
