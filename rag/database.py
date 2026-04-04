@@ -41,7 +41,7 @@ def create_vector_database(documents, db_name="chroma_db_v1"):
 def process_pdfs():
     chunks = chunk_documents()
     summarised_chunks = summarise_chunks(chunks)
-    create_vector_database(summarised_chunks, db_name="chroma_db_v1")
+    return summarised_chunks
 
 
 def load_database(db_name="chroma_db_v1"):
@@ -60,5 +60,8 @@ def load_database(db_name="chroma_db_v1"):
     return db
 
 
+
 if __name__ == "__main__":
-    process_pdfs()
+    summarised_chunks = process_pdfs()
+    create_vector_database(summarised_chunks, db_name="chroma_db_v1")
+
