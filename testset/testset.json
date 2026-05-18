@@ -1,5 +1,277 @@
 [
-
+{ "query": "What is SSD in object detection?",
+"expected_response": "SSD stands for Single Shot MultiBox Detector. It is a one-stage object detector that predicts class scores and bounding box offsets from multiple feature maps using default boxes, without a separate proposal stage."
+},
+{ "query": "How fast is SSD300 on VOC2007?",
+"expected_response": "SSD300 runs at 59 FPS on PASCAL VOC2007 test and achieves 74.3 mAP."
+},
+{ "query": "What problem does SSD solve compared with Faster R-CNN?",
+"expected_response": "SSD removes the proposal and region pooling stages, making detection faster while keeping high accuracy. The paper emphasizes that SSD is faster than Faster R-CNN and competitive in accuracy."
+},
+{ "query": "What are default boxes in SSD?",
+"expected_response": "Default boxes are fixed bounding boxes placed at each feature map location. SSD predicts class scores and box offsets relative to these boxes."
+},
+{ "query": "How does SSD handle multiple object scales?",
+"expected_response": "SSD uses multiple feature maps at different resolutions and makes predictions from each of them, which allows it to detect objects at multiple scales."
+},
+{ "query": "What aspect ratios are used in SSD default boxes?",
+"expected_response": "SSD uses multiple aspect ratios for default boxes, including 1:1, 1:2, 2:1, and in some layers also 1:3 and 3:1."
+},
+{ "query": "What is hard negative mining in SSD?",
+"expected_response": "Hard negative mining is a training strategy where SSD keeps only the hardest negative examples so that the ratio of negatives to positives is at most 3:1."
+},
+{ "query": "What loss does SSD use for training?",
+"expected_response": "SSD uses a weighted sum of localization loss and confidence loss. The localization loss is Smooth L1, and the confidence loss is softmax over multiple classes."
+},
+{ "query": "What data augmentation does SSD use?",
+"expected_response": "SSD uses random sampling of image patches with different minimum Jaccard overlaps, random crops, horizontal flipping, and photometric distortions."
+},
+{ "query": "What base network does SSD use in the paper?",
+"expected_response": "The SSD paper uses VGG-16 as the base network."
+},
+{ "query": "What is the main idea of Faster R-CNN?",
+"expected_response": "Faster R-CNN is a two-stage detector that first uses a Region Proposal Network to generate object proposals and then classifies and refines them with Fast R-CNN."
+},
+{ "query": "What does the Region Proposal Network output?",
+"expected_response": "The Region Proposal Network outputs rectangular region proposals and an objectness score for each proposal."
+},
+{ "query": "How many anchors does Faster R-CNN use by default?",
+"expected_response": "By default, Faster R-CNN uses 9 anchors at each sliding-window location, formed from 3 scales and 3 aspect ratios."
+},
+{ "query": "What IoU thresholds are used to label anchors in Faster R-CNN?",
+"expected_response": "Anchors are assigned a positive label if their IoU with a ground-truth box is above 0.7, and a negative label if their IoU with all ground-truth boxes is below 0.3."
+},
+{ "query": "What is the detection speed of Faster R-CNN in the paper?",
+"expected_response": "The paper reports about 5 FPS for Faster R-CNN with the VGG model including all steps."
+},
+{ "query": "What is Fast R-CNN?",
+"expected_response": "Fast R-CNN is a detector that classifies region proposals using shared convolutional features and ROI pooling, and it also performs bounding box regression."
+},
+{ "query": "How is Mask R-CNN different from Faster R-CNN?",
+"expected_response": "Mask R-CNN adds a mask prediction branch to Faster R-CNN. It predicts a binary mask for each RoI in parallel with class and box prediction."
+},
+{ "query": "What is RoIAlign in Mask R-CNN?",
+"expected_response": "RoIAlign removes the quantization used by RoIPool and uses bilinear interpolation to sample exact feature values, which improves alignment for mask prediction."
+},
+{ "query": "Why is RoIAlign important in Mask R-CNN?",
+"expected_response": "RoIAlign is important because accurate pixel-level alignment is crucial for mask prediction. The paper shows that it significantly improves mask accuracy compared with RoIPool."
+},
+{ "query": "What mask activation does Mask R-CNN use?",
+"expected_response": "Mask R-CNN uses a per-pixel sigmoid and binary cross-entropy for the mask branch."
+},
+{ "query": "What is the COCO mask AP of Mask R-CNN with ResNet-101-FPN?",
+"expected_response": "Mask R-CNN with ResNet-101-FPN achieves 35.7 mask AP on COCO test-dev."
+},
+{ "query": "What is the object detection AP of Mask R-CNN with ResNet-101-FPN?",
+"expected_response": "Mask R-CNN with ResNet-101-FPN achieves 38.2 box AP on COCO test-dev."
+},
+{ "query": "What is the main idea of YOLO?",
+"expected_response": "YOLO is a unified single-network object detector that predicts bounding boxes and class probabilities directly from the full image in one forward pass."
+},
+{ "query": "How does YOLO divide the image for prediction?",
+"expected_response": "YOLO divides the image into an S by S grid, and each grid cell is responsible for detecting objects whose centers fall inside that cell."
+},
+{ "query": "What is the PASCAL VOC2007 mAP of YOLO?",
+"expected_response": "YOLO achieves 63.4 mAP on PASCAL VOC2007."
+},
+{ "query": "What is the PASCAL VOC2007 mAP of Fast YOLO?",
+"expected_response": "Fast YOLO achieves 52.7 mAP on PASCAL VOC2007."
+},
+{ "query": "What is the main limitation of YOLO mentioned in the paper?",
+"expected_response": "YOLO struggles with small objects and precise localization. The paper says localization errors are its main source of error."
+},
+{ "query": "What is Focal Loss?",
+"expected_response": "Focal Loss is a dynamically scaled cross-entropy loss that down-weights easy examples so training focuses more on hard examples."
+},
+{ "query": "Why was Focal Loss introduced?",
+"expected_response": "It was introduced to address the extreme class imbalance in one-stage object detection, where background examples vastly outnumber foreground objects."
+},
+{ "query": "What detector does the Focal Loss paper propose?",
+"expected_response": "The paper proposes RetinaNet, a one-stage detector that uses a Feature Pyramid Network backbone and Focal Loss."
+},
+{ "query": "What is the COCO test-dev AP of RetinaNet with ResNet-101-FPN?",
+"expected_response": "RetinaNet with ResNet-101-FPN achieves 39.1 AP on COCO test-dev."
+},
+{ "query": "What focal loss gamma value works best in the paper?",
+"expected_response": "The paper reports that gamma 2 works best in its experiments."
+},
+{ "query": "What is the backbone of RetinaNet?",
+"expected_response": "RetinaNet uses a Feature Pyramid Network built on top of a ResNet backbone."
+},
+{ "query": "What is the main contribution of Feature Pyramid Networks?",
+"expected_response": "Feature Pyramid Networks build a rich multi-scale feature pyramid from a single input image using a top-down pathway and lateral connections."
+},
+{ "query": "Why are FPNs useful for object detection?",
+"expected_response": "FPNs improve multi-scale detection by providing feature maps at different resolutions, which helps detect objects of different sizes."
+},
+{ "query": "What is the main idea of DETR?",
+"expected_response": "DETR is an end-to-end object detector that treats detection as set prediction and uses a transformer with bipartite matching, removing the need for anchors and non-maximum suppression."
+},
+{ "query": "What dataset was DETR evaluated on?",
+"expected_response": "DETR was evaluated on the COCO 2017 detection and panoptic segmentation datasets."
+},
+{ "query": "Does DETR use non-maximum suppression?",
+"expected_response": "No. DETR is designed to not require non-maximum suppression."
+},
+{ "query": "How does DETR match predictions to ground truth?",
+"expected_response": "DETR uses bipartite matching with the Hungarian algorithm to uniquely assign each prediction to a ground-truth object."
+},
+{ "query": "What is the COCO validation AP of DETR with ResNet-50?",
+"expected_response": "DETR with ResNet-50 achieves 42.0 AP on the COCO validation set."
+},
+{ "query": "What is DETR's main weakness?",
+"expected_response": "DETR has lower performance on small objects and requires a long training schedule to converge."
+},
+{ "query": "What is Deformable DETR?",
+"expected_response": "Deformable DETR is an improved version of DETR that uses deformable attention to sample a small set of key points, which helps convergence and improves performance, especially on small objects."
+},
+{ "query": "How does Deformable DETR compare to DETR on small objects?",
+"expected_response": "Deformable DETR performs better than DETR on small objects."
+},
+{ "query": "What is the COCO AP of Deformable DETR with ResNet-50?",
+"expected_response": "Deformable DETR with ResNet-50 achieves 43.8 AP on COCO val."
+},
+{ "query": "What is the key improvement of Deformable DETR over DETR?",
+"expected_response": "Its key improvement is multi-scale deformable attention, which samples only a small set of locations around each reference point instead of attending to all spatial positions."
+},
+{ "query": "What is the original SSD paper title about?",
+"expected_response": "The paper presents the Single Shot MultiBox Detector, an object detector that predicts boxes and classes from multiple feature maps in one pass."
+},
+{ "query": "What is the relation between SSD and YOLO?",
+"expected_response": "Both are one-stage detectors, but SSD uses default boxes from multiple feature maps and is generally more accurate than YOLO in the paper."
+},
+{ "query": "What is the difference between Fast R-CNN and Faster R-CNN?",
+"expected_response": "Fast R-CNN uses external region proposals, while Faster R-CNN learns the proposal mechanism with a Region Proposal Network and shares convolutional features."
+},
+{ "query": "What is the role of the classification branch in Mask R-CNN?",
+"expected_response": "The classification branch predicts the object category, and the selected class determines which mask output is used."
+},
+{ "query": "What is the role of the mask branch in Mask R-CNN?",
+"expected_response": "The mask branch predicts a binary mask for each class, providing instance segmentation output for each detected object."
+},
+{ "query": "What is the purpose of feature sharing in Faster R-CNN?",
+"expected_response": "Feature sharing reduces computation by using shared convolutional layers for both region proposal generation and object detection."
+},
+{ "query": "What is the proposed loss in the RetinaNet paper called?",
+"expected_response": "The proposed loss is called Focal Loss."
+},
+{ "query": "What does DETR stand for?",
+"expected_response": "DETR stands for DEtection TRansformer."
+},
+{ "query": "What is the main result of the SSD paper on speed?",
+"expected_response": "SSD300 is reported as a real-time detector with 59 FPS and much better accuracy than YOLO."
+},
+{ "query": "How many output boxes does YOLO predict on VOC?",
+"expected_response": "YOLO predicts 98 bounding boxes per image on PASCAL VOC."
+},
+{ "query": "What is the main role of anchors in Faster R-CNN?",
+"expected_response": "Anchors serve as reference boxes at multiple scales and aspect ratios for region proposal regression."
+},
+{ "query": "What is the output of the DETR decoder?",
+"expected_response": "The DETR decoder outputs a fixed number of object query embeddings that are decoded into class labels and bounding boxes."
+},
+{ "query": "What is the purpose of auxiliary decoding losses in DETR?",
+"expected_response": "Auxiliary decoding losses help training, especially by helping the model output the correct number of objects."
+},
+{ "query": "What is the purpose of the Feature Pyramid Network in RetinaNet?",
+"expected_response": "It provides multi-scale features so RetinaNet can detect objects at different sizes effectively."
+},
+{ "query": "What is the role of the objectness score in RPN?",
+"expected_response": "The objectness score estimates whether a proposal corresponds to an object or not."
+},
+{ "query": "What is the key contribution of Focal Loss to RetinaNet?",
+"expected_response": "Focal Loss enables a one-stage detector to handle class imbalance and achieve state-of-the-art accuracy."
+},
+{ "query": "What training schedule does DETR use?",
+"expected_response": "The paper trains DETR for 300 epochs in the main ablations and 500 epochs for the longer schedule used to compare with Faster R-CNN."
+},
+{ "query": "Does Mask R-CNN use class competition for masks?",
+"expected_response": "No. It predicts an independent binary mask for each class using sigmoid, so masks do not compete with each other."
+},
+{ "query": "What is the AP of RetinaNet compared with Faster R-CNN on COCO?",
+"expected_response": "RetinaNet with ResNet-101-FPN achieves 39.1 AP on COCO test-dev, compared with 36.2 AP for Faster R-CNN with FPN in the paper's table."
+},
+{ "query": "What is the AP of Deformable DETR compared with DETR on COCO?",
+"expected_response": "Deformable DETR improves on DETR, reaching 43.8 AP with ResNet-50 on COCO val compared with 42.0 AP for DETR with ResNet-50."
+},
+{ "query": "What is the main idea behind multi-scale deformable attention?",
+"expected_response": "It samples a small number of points across multiple feature levels around a reference point instead of attending densely over all pixels."
+},
+{ "query": "How does SSD train default boxes?",
+"expected_response": "SSD matches default boxes to ground-truth boxes using Jaccard overlap during training and then optimizes localization and confidence losses end to end."
+},
+{ "query": "What is the purpose of NMS in Faster R-CNN?",
+"expected_response": "Non-maximum suppression removes redundant overlapping proposals or detections and keeps the most confident ones."
+},
+{ "query": "What is the role of ROI pooling in Fast R-CNN?",
+"expected_response": "ROI pooling extracts fixed-size features from each region proposal so they can be classified and refined by the network."
+},
+{ "query": "How does Mask R-CNN handle keypoints?",
+"expected_response": "Mask R-CNN extends its framework by treating each keypoint as a one-hot binary mask and predicting keypoints with a dedicated head."
+},
+{ "query": "What is the COCO keypoint AP of Mask R-CNN with mask branch?",
+"expected_response": "Mask R-CNN with keypoint mask achieves 63.1 APkp on COCO test-dev."
+},
+{ "query": "Which detector in the provided papers is described as real-time and anchor-free?",
+"expected_response": "DETR is described as anchor-free and end-to-end, but it is not presented as a real-time detector in the paper."
+},
+{ "query": "Which paper says it uses deformable convolution-like sampling in attention?",
+"expected_response": "The Deformable DETR paper says its deformable attention is inspired by deformable convolution and samples a small set of locations."
+},
+{ "query": "What is the role of object queries in DETR?",
+"expected_response": "Object queries are learned embeddings that the decoder uses to produce different detection predictions in parallel."
+},
+{ "query": "How does SSD achieve multi-scale detection without image pyramids?",
+"expected_response": "SSD uses feature maps from multiple layers within a single network rather than processing an image pyramid."
+},
+{ "query": "What is the difference between one-stage and two-stage detectors in the papers?",
+"expected_response": "One-stage detectors predict boxes and classes directly, while two-stage detectors first generate proposals and then classify and refine them."
+},
+{ "query": "What is the main performance trend of DETR on large objects?",
+"expected_response": "DETR performs particularly well on large objects, often better than Faster R-CNN on that aspect."
+},
+{ "query": "What is the main performance trend of Mask R-CNN on instance segmentation?",
+"expected_response": "Mask R-CNN achieves strong instance segmentation results and surpasses previous state-of-the-art single-model methods on COCO."
+},
+{ "query": "What is the role of photometric distortions in SSD training?",
+"expected_response": "They are part of SSD's data augmentation strategy to improve robustness to appearance changes."
+},
+{ "query": "What is the use of the Jaccard overlap threshold in SSD?",
+"expected_response": "It is used to match default boxes to ground-truth boxes during training."
+},
+{ "query": "What is the main conclusion of the Focal Loss paper?",
+"expected_response": "The paper concludes that Focal Loss solves the class imbalance problem in one-stage detectors and allows RetinaNet to match or surpass two-stage detectors."
+},
+{ "query": "What is the main conclusion of the SSD paper?",
+"expected_response": "The paper concludes that SSD is a fast, accurate single-shot detector that improves both speed and accuracy over previous real-time detectors."
+},
+{ "query": "What is the main conclusion of the DETR paper?",
+"expected_response": "The paper concludes that object detection can be formulated as direct set prediction with transformers, achieving competitive performance and simplifying the detection pipeline."
+},
+{ "query": "What is the main conclusion of the Deformable DETR paper?",
+"expected_response": "The paper concludes that deformable attention improves DETR by making it more efficient, faster to converge, and better at detecting small objects."
+},
+{ "query": "What is the main conclusion of the Mask R-CNN paper?",
+"expected_response": "The paper concludes that Mask R-CNN is a simple and flexible framework that achieves strong results for instance segmentation, detection, and keypoints."
+},
+{ "query": "What is the main conclusion of the Faster R-CNN paper?",
+"expected_response": "The paper concludes that sharing convolutional features between region proposal and detection makes object detection fast and accurate enough for near real-time use."
+},
+{ "query": "What is the main conclusion of the YOLO paper?",
+"expected_response": "The paper concludes that YOLO is a fast, unified detector that works in real time and generalizes well, though it struggles with localization and small objects."
+},
+{ "query": "What is the main conclusion of the Fast R-CNN paper?",
+"expected_response": "The paper concludes that sharing convolutional computation and using RoI pooling makes detection training and inference much faster than older region-based approaches."
+},
+{ "query": "What is the COCO AP of SSD512?",
+"expected_response": "SSD512 achieves 81.6 mAP on PASCAL VOC2007 when trained with COCO and fine-tuned on VOC 07+12 in the paper's table, while on COCO it reports 28.8 AP at IoU 0.5 and 48.5 AP at IoU 0.50.95 for the 0712COCO setting."
+},
+{ "query": "What is the COCO AP of YOLO?",
+"expected_response": "The provided YOLO paper does not report a COCO AP; it reports results mainly on PASCAL VOC and artwork datasets."
+},
+{ "query": "What is the hidden layer size of DETR's transformer decoder?",
+"expected_response": "The documents do not give a single universal hidden size for all variants beyond the reported implementation settings; the DETR paper uses a width of 256 in its main model."
+},
 { "query": "What exact learning rate schedule does SSD use on all datasets?",
 "expected_response": "I don't have enough information to answer that question based on the provided documents."
 },
