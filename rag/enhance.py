@@ -40,12 +40,11 @@ def separate_content_types(chunk):
     return content_data
 
 
-def create_ai_enhanced_summary(text: str, tables: List[str], images: List[str]) -> str:
+def create_ai_enhanced_summary(llm, text: str, tables: List[str], images: List[str]) -> str:
     """Create AI-enhanced summary for mixed content"""
 
     try:
         # Initialize LLM (needs vision model for images)
-        llm = ChatOllama(model="gemma3:4b", temperature=0)
 
         # Build the text prompt
         prompt_text = f"""You are creating a searchable description for document content retrieval.
@@ -117,6 +116,8 @@ def summarise_chunks(chunks):
 
     langchain_documents = []
 
+    llm = ChatOllama(model="gemma3:4b", temperature=0)
+
     for chunk in tqdm(chunks, desc="Enhancing chunks", unit="chunk"):
         # Analyze chunk content
         content_data = separate_content_types(chunk)
@@ -124,7 +125,7 @@ def summarise_chunks(chunks):
         # Create AI-enhanced summary if chunk has tables/images
         if content_data["tables"] or content_data["images"]:
             try:
-                enhanced_content = create_ai_enhanced_summary(
+                enhanced_content = create_ai_enhanced_summary(llm,
                     content_data["text"], content_data["tables"], content_data["images"]
                 )
             except Exception as e:

@@ -1,10 +1,44 @@
 [
 
-    {
-        "query": "What is coco?",
-        "expected_response":     "COCO is Common Objects in Context dataset  This dataset contains 328,000 annotated images with 91 unique object classes, 80 of which appear in the annotated data. The annotations describe the location and dimensions of bounding boxes as well as the class of each object in the image."
-    }
-
-
-
-]
+{ "query": "What exact learning rate schedule does SSD use on all datasets?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What exact GPU model was used to train Mask R-CNN on Cityscapes?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "Which company funded the YOLO paper's experiments?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What was the exact number of hours needed to train Faster R-CNN on ImageNet?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What is the authors' favorite object class in COCO?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What is the publication date of the SSD paper?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What was the exact random seed used in DETR training?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "Which paper in the attachments has the most citations on Google Scholar today?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What is the authors' personal opinion about cats as pets?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "How many pages long is the YOLO paper in its original journal version?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What is the street address of the lab where Mask R-CNN was developed?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What was the exact batch normalization momentum used in RetinaNet?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "Which of these papers discusses image captioning experiments in detail?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+},
+{ "query": "What is the authors' favorite coffee brand?",
+"expected_response": "I don't have enough information to answer that question based on the provided documents."
+} ]
