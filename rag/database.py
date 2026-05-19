@@ -60,8 +60,6 @@ def load_database(db_name="chroma_db_v1"):
     return db
 
 
-
 if __name__ == "__main__":
     summarised_chunks = process_pdfs()
     create_vector_database(summarised_chunks, db_name="chroma_db_v1")
-
