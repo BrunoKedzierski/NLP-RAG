@@ -13,6 +13,7 @@ NLP course project: **multimodal RAG** over **PDFs** (text, tables, images)—ex
 ```bash
 ollama pull nomic-embed-text
 ollama pull gemma3:4b
+ollama pull qwen3.5:4b
 ```
 
 GPU-oriented dependencies (`onnxruntime-gpu`, `tensorrt-cu12`, PyTorch CUDA) are configured for Linux/Windows; adjust `pyproject.toml` if you run CPU-only.
@@ -55,7 +56,7 @@ uv sync
 3. **Build the vector index** (PDFs → chunks → LLM-enhanced documents → Chroma under `db/`):
 
 ```bash
-uv run python rag/database.py
+uv run rag/database.py
 ```
 
 Executing `rag/database.py` as a script runs `process_pdfs()` (see `rag/database.py`).
@@ -63,7 +64,7 @@ Executing `rag/database.py` as a script runs `process_pdfs()` (see `rag/database
 4. **Try RAG model** (loads `db/chroma_db_v1`, initializes retriever and llm generator, then runs a CLI app that lets you ask questions):
 
 ```bash
-uv run python rag/main.py
+uv run rag/main.py
 ```
 
 ## Available Flags / Options
@@ -101,7 +102,7 @@ To evaluate your RAG setup, you need to provide a test set, which contains sampl
 ### 2. Run evaluation
 In command line run:
 ```bash
-uv run python rag/evaluate.py
+uv run rag/evaluate.py
 ```
 The script will return values of three key RAG metrics:
 `context_recall`, `faithfulness`, `factual_correctness`
